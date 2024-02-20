@@ -1,0 +1,179 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    /*esto mantiene todo dentro del tamaño del box, por lo que las medidas de padding que coloque sera guiandose dentro de mi box */
+    box-sizing: border-box;
+}
+
+:root{ /* es idéntico al selector html*/
+    --text-color: white;
+    --bg-url:url(./assets/assets/bg-mobile.jpg);
+    --stroke-color:rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.05);
+    --highlight-color:rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./moon-stars.svg);
+}
+
+.light{
+    --text-color:black; 
+    --bg-url:url(./assets/assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0,0,0,0.5);
+    --surface-color: rgba(0,0,0,0.05);
+    --surface-color-hover: rgba(0,0,0,0.2);
+    --highlight-color:rgba(0,0,0,0.1);
+    --switch-bg-url: url(./sun.svg);
+}
+
+body{
+   /* background-image: url(./assets/assets/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position:top center;
+
+    -esto me ayuda a que cubrir toda área visible-
+    background-size: cover;*/
+
+    /*background: color image repeat position /size */
+    background: var(--bg-url) no-repeat top center/cover;
+}
+
+
+/* el uso del * significa que va aplicar a todo el contenido que este dentro de body */
+body * {
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+#container{
+    width: 360px;
+    /*es para alinear al medio margin: auto*/
+   /* margin-top: 56px;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto; */
+    margin: 56px auto;
+    padding: 0 24px;
+}
+
+/*PROFILE*/
+
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img {
+    width: 112px;
+    margin: auto;
+}
+
+#profile p{
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+/*SWITCH*/
+#switch {
+    /* border: 1px solid red; esto solo lo usamos para guiarnos en un inicio y ubicar nuestro bottom */
+    position: relative; /* esto hara que nuestro boton este dentro de nuestra linea y cualquier movimiento que hagamos que haga sera dentro de nuestros bordes*/
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button{
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+    
+    position: absolute;  /*cuando ponemos esto automaticamente se pondra supuespuesto al otro*/
+    top:50%; /* esto es para poder alinearlo ya que la mitad de nuestra se ubico en la parte de arriba, y luego le digo 50% top y se alineo*/
+    z-index: 1;  /*que tan supuerpuesto queremos que este nuestra imagen*/
+    left: 0;
+    transform: translateY(-50%); 
+}
+
+.light #switch button {
+     right: 0;
+     left: initial; /* para que vaya  a su lugar original*/
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+/*LINKS*/
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    /*gap me sirve para darles una separación entre ellos */
+    gap: 16px;
+    padding: 24px 0;
+}
+
+ul li a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.5s;
+}
+
+
+/*pseudo-selector */
+ul li a:hover {
+ background: var(--surface-color-hover);
+ border: 1.5px solid var(--text-color);
+}
+
+/*SOCIAL LINKS */
+#social-links{
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    font-size: 24px;
+}
+
+#social-links a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+   transition: background 0.2s;
+   border-radius: 50%;
+}
+
+#social-links a:hover{
+    background: var(--highlight-color);
+}
+
+footer {
+   padding: 40px 0;
+   text-align: center; 
+   font-size: 14px;
+   word-spacing: 3px;
+
+}
+
+
