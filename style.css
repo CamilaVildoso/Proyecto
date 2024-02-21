@@ -96,11 +96,22 @@ body * {
     z-index: 1;  /*que tan supuerpuesto queremos que este nuestra imagen*/
     left: 0;
     transform: translateY(-50%); 
+    animation: slide-back 0.2s;
 }
 
 .light #switch button {
+/*con forwards le estamos diciendo que luego que termine la animación mantenga las 
+propiedades en la que esta se quedo*/
+    animation: slide-in 0.2s forwards;
+
+     /*Esto es lo que habiamos hecho antes de aplicar la animación
+     provocando un movimiento que es directo
      right: 0;
      left: initial; /* para que vaya  a su lugar original*/
+}
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -192,3 +203,22 @@ tenga esta imagen adecuada que vamos a colocar*/
     }
 }
 
+/*Animaciones*/
+/*esta animación va a mover el elemento de 0 a 50% */
+@keyframes slide-in {
+    from{
+        left:0;
+    }
+    to{
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from{
+        left:50%;
+    }
+    to{
+        left:0;
+    }
+}
